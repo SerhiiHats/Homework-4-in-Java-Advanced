@@ -20,13 +20,14 @@ public class HowOldAreYou {
 
         LocalDate myDate = LocalDate.of(myYear, myMonth, myDayOfMonth);
         LocalDate today = LocalDate.now();
+        int myDateYear = myDate.getMonthValue() > today.getMonthValue() ? today.getYear() - 1 - myDate.getYear() : today.getYear() - myDate.getYear();
+        int myDateMonth = myDate.getMonthValue() > today.getMonthValue() ? 12 - myDate.getMonthValue() + today.getMonthValue() : today.getMonthValue() - myDate.getMonthValue();
+        int myDateDay = myDate.getDayOfMonth() > today.getDayOfMonth() ? 30 - myDate.getDayOfMonth() + today.getDayOfMonth() : today.getDayOfMonth() - myDate.getDayOfMonth();
         System.out.println("Твой день рождения: " + myDate.getDayOfMonth() + " - " + myDate.getMonth() + " - " + myDate.getYear());
-        System.out.println("1. С Вашего дня рождения прошло: " + (today.getYear() - myDate.getYear()) + " year, " + (today.getMonthValue() - myDate.getMonthValue()) + " month, " + (today.getDayOfMonth() - myDate.getDayOfMonth()) + " day");
+        System.out.println("1. С Вашего дня рождения прошло: " + myDateYear + " year, " + myDateMonth + " month, " + myDateDay + " day");
         System.out.println("2. С Вашего дня рождения прошло: " + ChronoUnit.YEARS.between(myDate, today) + " year, " + ChronoUnit.MONTHS.between(myDate, today) + " month, " + ChronoUnit.DAYS.between(myDate, today) + " day");
 
-
-        System.out.println(today.getYear() - myDate.getYear());
-        // System.out.println(myDate.atTime());
+        System.out.println();
         LocalTime time = LocalTime.of(8, 40, 15);
         LocalDateTime myTime = myDate.atTime(time);
         LocalDateTime nowTime = LocalDateTime.now();
