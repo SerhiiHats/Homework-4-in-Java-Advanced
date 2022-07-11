@@ -20,9 +20,12 @@ public class Decoder {
         List<String> stringArrayListFile = new ArrayList<>();
         String path = "info.txt";
         File file = new File(path);
+        System.out.println(Color.GREEN + "Первоначальный текст:" + Color.DEFAULT);
         try (Scanner scanner = new Scanner(file)) {
             while (scanner.hasNext()) {
-                stringArrayListFile.add(scanner.nextLine());
+                String strTextLine = scanner.nextLine();
+                stringArrayListFile.add(strTextLine);
+                System.out.println(strTextLine);
             }
 
         } catch (FileNotFoundException e) {
